@@ -1,8 +1,31 @@
 #include "sudoku.hpp"
 
 
+bool checkPlacementSquare(Board& board, int col, int row)
+{
+    std::vector<char> toCheck;
+    col = (col / 3) * 3;
+    row = (row / 3) * 3;
+    for (int i = col; i < col + 3; i++)
+    {
+        for (int j = row; j < row + 3; j++)
+        {
+            toCheck.push_back(board[i][j]);
+        }
+    }
+    return (validRow(toCheck));
+}
 
- 
+
+bool isValidPlacement(Board& board, int i, int j)
+    {
+        if (!validRow(board[i]))
+            return (false);
+        if (!validColumn(board, j))
+            return (false);
+
+        return (checkPlacementSquare(board, i, j));
+    }
 
 
     bool    fillEmptyCell(Board& board)
@@ -21,7 +44,7 @@
                     while (num <= '9')
                     {
                         board[i][j] = num;
-                        if (isValidSudoku(board))
+                        if (isValidPlacement(board, i, j))
                         {
                             // printBoard(board);
                             if (fillEmptyCell(board))
