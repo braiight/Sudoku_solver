@@ -7,4 +7,4 @@ It solves a 9 x 9 sudoku grid using a backtracking algorithm.
  - Run `make` at the root of the repository
  - Run `./sudoku <grid>` where `<grid>` is a text file containing your grid.
 
-*Note: Empty cells on the grid should be replaced by a period (.)*
+*Note: Empty cells on the grid should be replaced with a period (.)*
